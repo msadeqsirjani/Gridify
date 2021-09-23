@@ -30,7 +30,7 @@ namespace Fop
             DataTypeStrategies.Add(FilterDataTypes.Guid, new GuidTypeStrategy());
         }
 
-        public static IQueryable<T> ApplyFop<T>(this IQueryable<T> queryable, IFopRequest request)
+        public static IQueryable<T> ApplyGrid<T>(this IQueryable<T> queryable, IFopRequest request)
         {
             // Filter
             queryable = queryable.ApplyFiltering(request);
