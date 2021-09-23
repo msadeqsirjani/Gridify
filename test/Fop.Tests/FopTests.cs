@@ -21,7 +21,7 @@ namespace Fop.Tests
         public void ApplyFop_Should_Success_Returns_Filtered_When_Passed_Multiple_Filter()
         {
             // Arrange
-            var request = new FopRequest
+            var request = new GridRequest
             {
                 // Filter
                 FilterList = new IFilterList[]
@@ -78,7 +78,7 @@ namespace Fop.Tests
         public void ApplyFop_Should_Success_Returns_Filtered_When_Passed_Multiple_Filter_With_Decimal_Double_Types()
         {
             // Arrange
-            var request = new FopRequest
+            var request = new GridRequest
             {
                 // Filter
                 FilterList = new IFilterList[]
@@ -138,7 +138,7 @@ namespace Fop.Tests
         public void ApplyFop_Should_Success_Returns_Filtered_When_Passed_Multiple_FilterList_With_DateTime_Filter()
         {
             // Arrange
-            var request = new FopRequest
+            var request = new GridRequest
             {
                 // Filter
                 FilterList = new IFilterList[]
@@ -190,7 +190,7 @@ namespace Fop.Tests
         public void ApplyFop_Should_Success_Returns_Filtered_When_Passed_Multiple_FilterList_With_Char_Filter()
         {
             // Arrange
-            var request = new FopRequest
+            var request = new GridRequest
             {
                 // Filter
                 FilterList = new IFilterList[]
@@ -235,7 +235,7 @@ namespace Fop.Tests
         public void ApplyFop_Should_Success_Returns_Filtered_When_Passed_Multiple_FilterList_With_Multiple_Filter()
         {
             // Arrange
-            var request = new FopRequest
+            var request = new GridRequest
             {
                 // Filter
                 FilterList = new IFilterList[]
@@ -316,7 +316,7 @@ namespace Fop.Tests
         public void ApplyFop_Should_Fail_Returns_IntDataTypeNotSupportedException()
         {
             // Arrange
-            var request = new FopRequest
+            var request = new GridRequest
             {
                 // Filter
                 FilterList = new IFilterList[]
@@ -374,7 +374,7 @@ namespace Fop.Tests
         public void ApplyFop_Should_Fail_Returns_StringDataTypeNotSupportedException()
         {
             // Arrange
-            var request = new FopRequest
+            var request = new GridRequest
             {
                 // Filter
                 FilterList = new IFilterList[]
@@ -432,7 +432,7 @@ namespace Fop.Tests
         public void ApplyFop_Should_Fail_Returns_LogicOperatorNotFoundException()
         {
             // Arrange
-            var request = new FopRequest
+            var request = new GridRequest
             {
                 // Filter
                 FilterList = new IFilterList[]

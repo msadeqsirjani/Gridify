@@ -20,7 +20,7 @@ namespace Sample.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index([FromQuery] FopRequest request)
+        public async Task<IActionResult> Index([FromQuery] GridRequest request)
         {
             var filteredStudents = await _studentRepository.RetrieveStudents(request);
 
@@ -31,7 +31,7 @@ namespace Sample.Api.Controllers
         // It's simple 
         // you can contribute to improve it
         [HttpGet("PagedResult")]
-        public async Task<IActionResult> PagedResult([FromQuery] FopRequest request)
+        public async Task<IActionResult> PagedResult([FromQuery] GridRequest request)
         {
             var filteredStudents = await _studentRepository.RetrieveStudents(request);
 

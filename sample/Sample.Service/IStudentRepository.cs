@@ -7,6 +7,6 @@ namespace Sample.Repository
 {
     public interface IStudentRepository
     {
-        Task<List<Student>> RetrieveStudents(IFopRequest request);
+        Task<List<Student>> RetrieveStudents(IGridRequest request);
     }
 }
