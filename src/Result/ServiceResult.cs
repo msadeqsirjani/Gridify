@@ -47,6 +47,9 @@ namespace Fop.Result
         {
             Schema = request.Schema;
 
+            if (request.Pagination != null && Pagination != null)
+                Pagination.TotalPage = Pagination.TotalRow / request.Pagination.PageSize + 1;
+
             return this;
         }
 
@@ -81,6 +84,9 @@ namespace Fop.Result
         public ServiceResult<T> InitSchema<TV>(IGridRequest<TV> request) where TV : new()
         {
             Schema = request.Schema;
+
+            if (request.Pagination != null && Pagination != null)
+                Pagination.TotalPage = Pagination.TotalRow / request.Pagination.PageSize + 1;
 
             return this;
         }
