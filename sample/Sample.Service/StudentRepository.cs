@@ -18,7 +18,7 @@ namespace Sample.Repository
 
         public async Task<List<Student>> RetrieveStudents(IFopRequest request)
         {
-            var filteredStudents = _context.Students.Include(x => x.Department).ApplyFop(request);
+            var filteredStudents = _context.Students.Include(x => x.Department).ApplyGrid(request);
             return await filteredStudents.ToListAsync();
         }
     }
