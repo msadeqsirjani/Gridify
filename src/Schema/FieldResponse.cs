@@ -13,7 +13,7 @@ namespace Fop.Schema
         public bool IsEditable { get; set; }
         public bool IsSelectable { get; set; }
         public bool IsDetail { get; set; }
-        public int Order { get; set; }
+        public int Sequence { get; set; }
 
         public FieldResponse FillFieldResponse(List<IMeta> metas)
         {
@@ -50,8 +50,8 @@ namespace Fop.Schema
                     case nameof(MetaDetail):
                         IsDetail = ((MetaDetail)meta).IsDetail;
                         break;
-                    case nameof(MetaOrder):
-                        Order = ((MetaOrder)meta).Order;
+                    case nameof(MetaSequence):
+                        Sequence = ((MetaSequence)meta).Sequence;
                         break;
                 }
             });
