@@ -18,7 +18,7 @@ namespace Sample.Repository
 
         public async Task<List<Student>> RetrieveStudents(IGridRequest request)
         {
-            var filteredStudents = _context.Students.Include(x => x.Department).ApplyGrid(request);
+            var filteredStudents = _context.Students.Include(x => x.Department).Gridify(request);
             return await filteredStudents.ToListAsync();
         }
     }
