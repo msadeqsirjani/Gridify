@@ -68,7 +68,7 @@ namespace Fop.Tests
             };
 
             // Act
-            var result = _students.ApplyGrid(request);
+            var result = _students.Gridify(request);
 
             // Assert
             Assert.True(result.Any(x => x.Name == "Mohammad Sadeq"));
@@ -127,7 +127,7 @@ namespace Fop.Tests
             var expectedCount = _students.Count(x => x.Bonus > 50.5m && x.Average <= 75.5);
 
             // Act
-            var result = _students.ApplyGrid(request);
+            var result = _students.Gridify(request);
 
             // Assert
             Assert.True(result.Any(x => x.Name == "Mohammad Sadeq"));
@@ -179,7 +179,7 @@ namespace Fop.Tests
             };
 
             // Act
-            var result = _students.ApplyGrid(request);
+            var result = _students.Gridify(request);
 
 
             // Assert
@@ -224,7 +224,7 @@ namespace Fop.Tests
             };
 
             // Act
-            var result = _students.ApplyGrid(request);
+            var result = _students.Gridify(request);
 
 
             // Assert
@@ -305,7 +305,7 @@ namespace Fop.Tests
             };
 
             // Act
-            var result = _students.ApplyGrid(request);
+            var result = _students.Gridify(request);
 
 
             // Assert
@@ -364,7 +364,7 @@ namespace Fop.Tests
             };
 
             // Act
-            var ex = Record.Exception(() => _students.ApplyGrid(request));
+            var ex = Record.Exception(() => _students.Gridify(request));
 
             // Assert
             Assert.True(ex is IntDataTypeNotSupportedException);
@@ -422,7 +422,7 @@ namespace Fop.Tests
             };
 
             // Act
-            var ex = Record.Exception(() => _students.ApplyGrid(request));
+            var ex = Record.Exception(() => _students.Gridify(request));
 
             // Assert
             Assert.True(ex is StringDataTypeNotSupportedException);
@@ -479,7 +479,7 @@ namespace Fop.Tests
             };
 
             // Act
-            var ex = Record.Exception(() => _students.ApplyGrid(request));
+            var ex = Record.Exception(() => _students.Gridify(request));
 
             // Assert
             Assert.True(ex is StringDataTypeNotSupportedException);
