@@ -1,9 +1,9 @@
-﻿using Fop;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Sample.Data;
 using Sample.Entity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Gridify;
 
 namespace Sample.Repository
 {

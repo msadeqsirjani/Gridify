@@ -3,12 +3,13 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
 
-    <Authors>Aybars Arslan</Authors>
-    <Company>AybSoft</Company>
-    <Copyright>Aybars Arslan</Copyright>
+    <Authors>Mohammad Sadeq Sirjani</Authors>
+    <Company>Cactus.Blade</Company>
+    <Copyright>Mohammad Sadeq Sirjani</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Gridify\Gridify.csproj" />
     <ProjectReference Include="..\Sample.Data\Sample.Data.csproj" />
     <ProjectReference Include="..\Sample.Entity\Sample.Entity.csproj" />
   </ItemGroup>
