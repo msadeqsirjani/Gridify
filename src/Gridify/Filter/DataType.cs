@@ -1,6 +1,6 @@
 ﻿namespace Gridify.Filter
 {
-    public enum FilterDataTypes : byte
+    public enum DataType : byte
     {
         String,
         Int,
