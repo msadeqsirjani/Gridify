@@ -1,8 +1,6 @@
-﻿using Gridify.Order;
-
-namespace Gridify.Meta
+﻿namespace Gridify.Meta
 {
-    public class MetaOrder : OrderList, IMeta
+    public class MetaOrder : Order.Order, IMeta
     {
         public string GetName() => "Order";
     }

@@ -1,29 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using Gridify.Result;
 using System.Reflection;
 
 namespace Gridify.Meta
 {
-    public class MetaBuilder
+    public class MetaBuilder<TSource, TProperty> where TSource : new()
     {
         public string PropertyName { get; }
         public PropertyInfo PropertyInfo { get; }
-        public List<IMeta> MetaInformation { get; set; }
+        public GridResponse<TSource> GridResponse { get; }
 
-        public MetaBuilder(string propertyName, PropertyInfo propertyInfo)
+        public MetaBuilder(PropertyInfo propertyInfo, GridResponse<TSource> gridResponse)
         {
-            PropertyName = propertyName;
+            PropertyName = propertyInfo.Name;
             PropertyInfo = propertyInfo;
+            GridResponse = gridResponse;
         }
 
-        public MetaBuilder(string propertyName)
+        public MetaBuilder(string propertyName, GridResponse<TSource> gridResponse)
         {
             PropertyName = propertyName;
+            GridResponse = gridResponse;
             PropertyInfo = null;
         }
 
         public void AddMeta(string key, IMeta meta)
         {
-            MetaInformation.Add(meta);
+            GridResponse.Add(key, meta);
         }
     }
 }
