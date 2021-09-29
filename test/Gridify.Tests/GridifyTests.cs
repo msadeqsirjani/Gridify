@@ -3,6 +3,7 @@ using Gridify.Filter;
 using Gridify.Order;
 using Gridify.Page;
 using Sample.Entity;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -24,7 +25,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new[]
+                Filters = new[]
                 {
                     new FilterList
                     {
@@ -34,14 +35,14 @@ namespace Gridify.Tests
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.GreaterThan,
-                                DataType = FilterDataTypes.Int,
+                                DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Midterm),
                                 Value = "98"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.StartsWith,
-                                DataType = FilterDataTypes.String,
+                                DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.Name),
                                 Value = "Moha"
                             }
@@ -50,9 +51,9 @@ namespace Gridify.Tests
                 },
 
                 // Order
-                OrderList = new[]
+                Orders = new[]
                 {
-                    new OrderList
+                    new Order.Order
                     {
                         Direction = OrderDirection.Desc,
                         OrderBy = nameof(Student.IdentityNumber)
@@ -70,8 +71,10 @@ namespace Gridify.Tests
             // Act
             var result = _students.Gridify(request);
 
+            var values = (IEnumerable<Student>)result.Value;
+
             // Assert
-            Assert.True(result.Any(x => x.Name == "Mohammad Sadeq"));
+            Assert.True(values.Any(x => x.Name == "Mohammad Sadeq"));
         }
 
         [Fact]
@@ -81,7 +84,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new[]
+                Filters = new[]
                 {
                     new FilterList
                     {
@@ -91,14 +94,14 @@ namespace Gridify.Tests
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.GreaterThan,
-                                DataType = FilterDataTypes.Decimal,
+                                DataType = DataType.Decimal,
                                 Key = nameof(Student) + "." + nameof(Student.Bonus),
                                 Value = "50.5m"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.LessOrEqualThan,
-                                DataType = FilterDataTypes.Double,
+                                DataType = DataType.Double,
                                 Key = nameof(Student) + "." + nameof(Student.Average),
                                 Value = "75.5"
                             }
@@ -107,9 +110,9 @@ namespace Gridify.Tests
                 },
 
                 // Order
-                OrderList = new[]
+                Orders = new[]
                 {
-                    new OrderList
+                    new Order.Order
                     {
                         Direction = OrderDirection.Desc,
                         OrderBy = nameof(Student.IdentityNumber)
@@ -129,9 +132,11 @@ namespace Gridify.Tests
             // Act
             var result = _students.Gridify(request);
 
+            var values = (IEnumerable<Student>)result.Value;
+
             // Assert
-            Assert.True(result.Any(x => x.Name == "Mohammad Sadeq"));
-            Assert.True(expectedCount == result.Count());
+            Assert.True(values.Any(x => x.Name == "Mohammad Sadeq"));
+            Assert.True(expectedCount == values.Count());
         }
 
         [Fact]
@@ -141,7 +146,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new[]
+                Filters = new[]
                 {
                     new FilterList
                     {
@@ -151,14 +156,14 @@ namespace Gridify.Tests
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.GreaterThan,
-                                DataType = FilterDataTypes.DateTime,
+                                DataType = DataType.DateTime,
                                 Key = nameof(Student) + "." + nameof(Student.Birthday),
                                 Value = "1993-06-07 00:00:00"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.LessThan,
-                                DataType = FilterDataTypes.DateTime,
+                                DataType = DataType.DateTime,
                                 Key = nameof(Student) + "." + nameof(Student.Birthday),
                                 Value = "1997-06-07 00:00:00"
                             }
@@ -168,9 +173,9 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new[]
+                Orders = new[]
                 {
-                    new OrderList
+                    new Order.Order
                     {
                         Direction = OrderDirection.Desc,
                         OrderBy = nameof(Student.IdentityNumber)
@@ -181,9 +186,10 @@ namespace Gridify.Tests
             // Act
             var result = _students.Gridify(request);
 
+            var values = (IEnumerable<Student>)result.Value;
 
             // Assert
-            Assert.True(result.Any(x => x.Name == "Mohammad Sadeq"));
+            Assert.True(values.Any(x => x.Name == "Mohammad Sadeq"));
         }
 
         [Fact]
@@ -193,7 +199,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new[]
+                Filters = new[]
                 {
                     new FilterList
                     {
@@ -203,7 +209,7 @@ namespace Gridify.Tests
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.Equal,
-                                DataType = FilterDataTypes.Char,
+                                DataType = DataType.Char,
                                 Key = nameof(Student) + "." + nameof(Student.Level),
                                 Value = "a"
                             }
@@ -213,9 +219,9 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new[]
+                Orders = new[]
                 {
-                    new OrderList
+                    new Order.Order
                     {
                         Direction = OrderDirection.Desc,
                         OrderBy = nameof(Student.IdentityNumber)
@@ -226,9 +232,10 @@ namespace Gridify.Tests
             // Act
             var result = _students.Gridify(request);
 
+            var values = (IEnumerable<Student>)result.Value;
 
             // Assert
-            Assert.True(result.Any(x => x.Name == "Mohammad Sadeq"));
+            Assert.True(values.Any(x => x.Name == "Mohammad Sadeq"));
         }
 
         [Fact]
@@ -238,7 +245,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new[]
+                Filters = new[]
                 {
                     new FilterList
                     {
@@ -248,21 +255,21 @@ namespace Gridify.Tests
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.GreaterThan,
-                                DataType = FilterDataTypes.Int,
+                                DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Final),
                                 Value = "9"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.LessOrEqualThan,
-                                DataType = FilterDataTypes.Int,
+                                DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Midterm),
                                 Value = "100"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.StartsWith,
-                                DataType = FilterDataTypes.String,
+                                DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.Surname),
                                 Value = "A"
                             }
@@ -276,14 +283,14 @@ namespace Gridify.Tests
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.Equal,
-                                DataType = FilterDataTypes.String,
+                                DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.IdentityNumber),
                                 Value = "100010"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.Equal,
-                                DataType = FilterDataTypes.String,
+                                DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.IdentityNumber),
                                 Value = "100101"
                             },
@@ -294,9 +301,9 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new[]
+                Orders = new[]
                 {
-                    new OrderList
+                    new Order.Order
                     {
                         Direction = OrderDirection.Desc,
                         OrderBy = nameof(Student.IdentityNumber)
@@ -307,9 +314,10 @@ namespace Gridify.Tests
             // Act
             var result = _students.Gridify(request);
 
+            var values = (IEnumerable<Student>)result.Value;
 
             // Assert
-            Assert.True(result.Any(x => x.Name == "Mohammad Sadeq"));
+            Assert.True(values.Any(x => x.Name == "Mohammad Sadeq"));
         }
 
         [Fact]
@@ -319,7 +327,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new[]
+                Filters = new[]
                 {
                     new FilterList
                     {
@@ -329,21 +337,21 @@ namespace Gridify.Tests
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.Contains,
-                                DataType = FilterDataTypes.Int,
+                                DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Midterm),
                                 Value = "9"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.LessThan,
-                                DataType = FilterDataTypes.Int,
+                                DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Final),
                                 Value = "91"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.StartsWith,
-                                DataType = FilterDataTypes.String,
+                                DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.Name),
                                 Value = "Author"
                             }
@@ -353,9 +361,9 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new[]
+                Orders = new[]
                 {
-                    new OrderList
+                    new Order.Order
                     {
                         Direction = OrderDirection.Desc,
                         OrderBy = nameof(Student.IdentityNumber)
@@ -377,7 +385,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new[]
+                Filters = new[]
                 {
                     new FilterList
                     {
@@ -387,21 +395,21 @@ namespace Gridify.Tests
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.GreaterThan,
-                                DataType = FilterDataTypes.Int,
+                                DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Midterm),
                                 Value = "9"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.LessThan,
-                                DataType = FilterDataTypes.Int,
+                                DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Final),
                                 Value = "91"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.GreaterThan,
-                                DataType = FilterDataTypes.String,
+                                DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.Name),
                                 Value = "A"
                             }
@@ -411,9 +419,9 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new[]
+                Orders = new[]
                 {
-                    new OrderList
+                    new Order.Order
                     {
                         Direction = OrderDirection.Desc,
                         OrderBy = nameof(Student.IdentityNumber)
@@ -435,7 +443,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new[]
+                Filters = new[]
                 {
                     new FilterList
                     {
@@ -444,21 +452,21 @@ namespace Gridify.Tests
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.GreaterThan,
-                                DataType = FilterDataTypes.Int,
+                                DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Midterm),
                                 Value = "9"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.LessThan,
-                                DataType = FilterDataTypes.Int,
+                                DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Final),
                                 Value = "91"
                             },
                             new Filter.Filter
                             {
                                 Operator = FilterOperators.GreaterThan,
-                                DataType = FilterDataTypes.String,
+                                DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.Name),
                                 Value = "A"
                             }
@@ -468,9 +476,9 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new[]
+                Orders = new[]
                 {
-                    new OrderList
+                    new Order.Order
                     {
                         Direction = OrderDirection.Desc,
                         OrderBy = nameof(Student.IdentityNumber)
