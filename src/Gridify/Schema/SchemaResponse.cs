@@ -1,21 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Gridify.Meta;
+using System.Collections.Generic;
 using System.Linq;
-using Gridify.Meta;
 
 namespace Gridify.Schema
 {
     public class SchemaResponse
     {
-        public List<FieldResponse> Fields { get; set; }
-        public List<FilterResponse> Filters { get; set; }
-        public List<OrderResponse> Orders { get; set; }
-
-        public SchemaResponse()
-        {
-            Fields = new List<FieldResponse>();
-            Filters = new List<FilterResponse>();
-            Orders = new List<OrderResponse>();
-        }
+        public List<FieldResponse> Fields { get; } = new();
+        public List<FilterResponse> Filters { get; } = new();
+        public List<OrderResponse> Orders { get; } = new();
 
         public SchemaResponse(IReadOnlyCollection<KeyValuePair<string, IMeta>> pairs)
         {
@@ -27,7 +20,9 @@ namespace Gridify.Schema
                         .Select(x => x.Value)
                         .ToList();
 
-                    Fields.Add(new FieldResponse().FillFieldResponse(fieldMetaKeys));
+                    var fieldResponse = new FieldResponse().FillFieldResponse(fieldMetaKeys);
+
+                    Fields.Add(fieldResponse);
 
                     fieldMetaKeys.Where(m => m.GetType() == typeof(MetaFilter)).ToList().ForEach(meta =>
                     {
