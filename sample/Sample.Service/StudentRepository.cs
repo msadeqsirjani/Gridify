@@ -1,9 +1,7 @@
 ﻿using Gridify;
+using Gridify.Result;
 using Microsoft.EntityFrameworkCore;
 using Sample.Data;
-using Sample.Entity;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Sample.Repository
 {
@@ -16,10 +14,13 @@ namespace Sample.Repository
             _context = context;
         }
 
-        public async Task<List<Student>> RetrieveStudents(GridRequest request)
+        public ServiceResult RetrieveStudents(GridRequest request)
         {
-            var filteredStudents = _context.Students.Include(x => x.Department).Gridify(request);
-            return await filteredStudents.ToListAsync();
+            var filteredStudents = _context.Students
+                .Include(x => x.Department)
+                .Gridify(request);
+
+            return filteredStudents;
         }
     }
 }
