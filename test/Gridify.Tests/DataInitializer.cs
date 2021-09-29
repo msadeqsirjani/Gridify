@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fop.Tests
+namespace Gridify.Tests
 {
-    public class DataInitializer
+    public static class DataInitializer
     {
         public static IQueryable<Student> GenerateStudentList()
         {
