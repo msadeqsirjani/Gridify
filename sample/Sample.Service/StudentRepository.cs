@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Gridify;
+using Microsoft.EntityFrameworkCore;
 using Sample.Data;
 using Sample.Entity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Gridify;
 
 namespace Sample.Repository
 {
@@ -16,7 +16,7 @@ namespace Sample.Repository
             _context = context;
         }
 
-        public async Task<List<Student>> RetrieveStudents(IGridRequest request)
+        public async Task<List<Student>> RetrieveStudents(GridRequest request)
         {
             var filteredStudents = _context.Students.Include(x => x.Department).Gridify(request);
             return await filteredStudents.ToListAsync();

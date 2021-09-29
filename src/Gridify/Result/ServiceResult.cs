@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Gridify.Schema;
+﻿using Gridify.Schema;
 using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Gridify.Result
 {
@@ -43,7 +43,7 @@ namespace Gridify.Result
             Message = message;
         }
 
-        public ServiceResult InitSchema(IGridRequest request)
+        public ServiceResult InitSchema(GridRequest request)
         {
             Schema = request.Schema;
 
@@ -81,7 +81,7 @@ namespace Gridify.Result
             }
         }
 
-        public ServiceResult<T> InitSchema<TV>(IGridRequest<TV> request) where TV : new()
+        public ServiceResult<T> InitSchema<TV>(GridRequest<TV> request) where TV : new()
         {
             Schema = request.Schema;
 

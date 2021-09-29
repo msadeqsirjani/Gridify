@@ -1,13 +1,11 @@
-﻿using System;
+﻿using DynamicExpresso;
+using Gridify.Filter;
+using Gridify.Strategies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Text;
-using DynamicExpresso;
-using Gridify.Filter;
-using Gridify.Order;
-using Gridify.Page;
-using Gridify.Strategies;
 
 namespace Gridify
 {
@@ -30,7 +28,7 @@ namespace Gridify
             DataTypeStrategies.Add(FilterDataTypes.Guid, new GuidTypeStrategy());
         }
 
-        public static IQueryable<T> Gridify<T>(this IQueryable<T> queryable, IGridRequest request)
+        public static IQueryable<T> Gridify<T>(this IQueryable<T> queryable, GridRequest request)
         {
             // Filter
             queryable = queryable.ApplyFiltering(request);
@@ -44,7 +42,7 @@ namespace Gridify
             return queryable;
         }
 
-        public static IQueryable<T> ApplyPaging<T>(this IQueryable<T> queryable, IPageRequest request)
+        public static IQueryable<T> ApplyPaging<T>(this IQueryable<T> queryable, GridRequest request)
         {
             if (request.Pagination == null)
                 return queryable;
@@ -57,7 +55,7 @@ namespace Gridify
             return queryable;
         }
 
-        public static IQueryable<T> ApplyOrdering<T>(this IQueryable<T> queryable, IOrderRequest request)
+        public static IQueryable<T> ApplyOrdering<T>(this IQueryable<T> queryable, GridRequest request)
         {
             if (request.OrderList == null || !request.OrderList.Any())
                 return queryable;
@@ -75,7 +73,7 @@ namespace Gridify
             return queryable;
         }
 
-        public static IQueryable<T> ApplyFiltering<T>(this IQueryable<T> queryable, IFilterRequest request)
+        public static IQueryable<T> ApplyFiltering<T>(this IQueryable<T> queryable, GridRequest request)
         {
             if (request.FilterList == null || !request.FilterList.Any())
                 return queryable;
@@ -112,7 +110,7 @@ namespace Gridify
 
         #region [ Helpers ]
 
-        private static (string, List<KeyValuePair<string, string>>) GenerateDynamicWhereExpression(IFilterList filterList)
+        private static (string, List<KeyValuePair<string, string>>) GenerateDynamicWhereExpression(FilterList filterList)
         {
             var dynamicExpressBuilder = new StringBuilder();
             var kvp = new List<KeyValuePair<string, string>>();
@@ -146,7 +144,7 @@ namespace Gridify
             };
         }
 
-        public static string ConvertFilterToText(IFilter filter)
+        public static string ConvertFilterToText(Filter.Filter filter)
         {
             return DataTypeStrategies[filter.DataType].ConvertFilterToText(filter);
         }

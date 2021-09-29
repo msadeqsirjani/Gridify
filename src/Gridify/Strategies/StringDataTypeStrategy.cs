@@ -5,7 +5,7 @@ namespace Gridify.Strategies
 {
     public class StringDataTypeStrategy : IFilterDataTypeStrategy
     {
-        public string ConvertFilterToText(IFilter filter)
+        public string ConvertFilterToText(Filter.Filter filter)
         {
             switch (filter.Operator)
             {

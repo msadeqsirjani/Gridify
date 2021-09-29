@@ -24,7 +24,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new IFilterList[]
+                FilterList = new[]
                 {
                     new FilterList
                     {
@@ -50,7 +50,7 @@ namespace Gridify.Tests
                 },
 
                 // Order
-                OrderList = new IOrderList[]
+                OrderList = new[]
                 {
                     new OrderList
                     {
@@ -81,7 +81,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new IFilterList[]
+                FilterList = new[]
                 {
                     new FilterList
                     {
@@ -107,7 +107,7 @@ namespace Gridify.Tests
                 },
 
                 // Order
-                OrderList = new IOrderList[]
+                OrderList = new[]
                 {
                     new OrderList
                     {
@@ -141,7 +141,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new IFilterList[]
+                FilterList = new[]
                 {
                     new FilterList
                     {
@@ -168,7 +168,7 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new IOrderList[]
+                OrderList = new[]
                 {
                     new OrderList
                     {
@@ -193,7 +193,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new IFilterList[]
+                FilterList = new[]
                 {
                     new FilterList
                     {
@@ -213,7 +213,7 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new IOrderList[]
+                OrderList = new[]
                 {
                     new OrderList
                     {
@@ -238,7 +238,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new IFilterList[]
+                FilterList = new[]
                 {
                     new FilterList
                     {
@@ -294,7 +294,7 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new IOrderList[]
+                OrderList = new[]
                 {
                     new OrderList
                     {
@@ -319,7 +319,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new IFilterList[]
+                FilterList = new[]
                 {
                     new FilterList
                     {
@@ -353,7 +353,7 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new IOrderList[]
+                OrderList = new[]
                 {
                     new OrderList
                     {
@@ -377,7 +377,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new IFilterList[]
+                FilterList = new[]
                 {
                     new FilterList
                     {
@@ -411,7 +411,7 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new IOrderList[]
+                OrderList = new[]
                 {
                     new OrderList
                     {
@@ -435,7 +435,7 @@ namespace Gridify.Tests
             var request = new GridRequest
             {
                 // Filter
-                FilterList = new IFilterList[]
+                FilterList = new[]
                 {
                     new FilterList
                     {
@@ -468,7 +468,7 @@ namespace Gridify.Tests
 
 
                 // Order
-                OrderList = new IOrderList[]
+                OrderList = new[]
                 {
                     new OrderList
                     {

@@ -1,28 +1,28 @@
-﻿using System.Collections.Generic;
-using Gridify.Filter;
+﻿using Gridify.Filter;
 using Gridify.Order;
 using Gridify.Page;
+using System.Collections.Generic;
 
 namespace Gridify
 {
-    public class GridRequest : IGridRequest
+    public class GridRequest
     {
-        public IEnumerable<IFilterList> FilterList { get; set; }
+        public IEnumerable<FilterList> FilterList { get; set; }
 
-        public IEnumerable<IOrderList> OrderList { get; set; }
+        public IEnumerable<OrderList> OrderList { get; set; }
 
-        public IPagination Pagination { get; set; }
+        public Pagination Pagination { get; set; }
 
         public bool Schema { get; set; }
     }
 
-    public class GridRequest<T> : IGridRequest<T> where T : new()
+    public class GridRequest<T> where T : new()
     {
-        public IEnumerable<IFilterList> FilterList { get; set; }
+        public IEnumerable<FilterList> FilterList { get; set; }
 
-        public IEnumerable<IOrderList> OrderList { get; set; }
+        public IEnumerable<OrderList> OrderList { get; set; }
 
-        public IPagination Pagination { get; set; }
+        public Pagination Pagination { get; set; }
 
         public bool Schema { get; set; }
 

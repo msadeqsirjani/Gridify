@@ -1,14 +1,7 @@
-﻿using Gridify.Filter;
-
-namespace Gridify.Schema
+﻿namespace Gridify.Schema
 {
-    public class FilterResponse : IFilter
+    public class FilterResponse : Filter.Filter
     {
-        public FilterOperators Operator { get; set; }
-        public FilterDataTypes DataType { get; set; }
-        public string Key { get; set; }
-        public string Value { get; set; }
-        public string Assembly { get; set; }
-        public string Fullname { get; set; }
+
     }
 }

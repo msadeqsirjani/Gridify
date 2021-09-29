@@ -2,9 +2,8 @@
 
 namespace Gridify.Schema
 {
-    public class OrderResponse : IOrderList
+    public class OrderResponse : OrderList
     {
-        public string OrderBy { get; set; }
-        public OrderDirection Direction { get; set; }
+
     }
 }

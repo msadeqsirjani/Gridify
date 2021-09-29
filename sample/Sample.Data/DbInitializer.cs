@@ -17,15 +17,15 @@ namespace Sample.Data
             {
                 var departments = new List<Department>
                 {
-                    new Department
+                    new()
                     {
                         Name = "Software Engineering"
                     },
-                    new Department
+                    new()
                     {
                         Name = "Architecture"
                     },
-                    new Department
+                    new()
                     {
                         Name = "Zoology"
                     }

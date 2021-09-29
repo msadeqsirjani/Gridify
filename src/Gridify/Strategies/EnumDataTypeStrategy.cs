@@ -5,14 +5,14 @@ namespace Gridify.Strategies
 {
     public class EnumDataTypeStrategy : IFilterDataTypeStrategy
     {
-        public string ConvertFilterToText(IFilter filter)
+        public string ConvertFilterToText(Filter.Filter filter)
         {
             switch (filter.Operator)
             {
                 case FilterOperators.Equal:
                     return filter.Key + " == " + filter.Value;
                 case FilterOperators.NotEqual:
-                    return filter.Key + " != "+ filter.Value;
+                    return filter.Key + " != " + filter.Value;
                 case FilterOperators.GreaterThan:
                 case FilterOperators.GreaterOrEqualThan:
                 case FilterOperators.LessThan:

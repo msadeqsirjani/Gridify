@@ -2,10 +2,10 @@
 
 namespace Gridify.Filter
 {
-    public class FilterList : IFilterList
+    public class FilterList
     {
         public FilterLogic Logic { get; set; }
 
-        public IEnumerable<IFilter> Filters { get; set; }
+        public IEnumerable<Filter> Filters { get; set; }
     }
 }

@@ -1,9 +1,7 @@
-﻿using Gridify.Filter;
-
-namespace Gridify.Strategies
+﻿namespace Gridify.Strategies
 {
     public interface IFilterDataTypeStrategy
     {
-        string ConvertFilterToText(IFilter filter);
+        string ConvertFilterToText(Filter.Filter filter);
     }
 }

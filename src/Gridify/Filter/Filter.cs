@@ -1,6 +1,6 @@
 ﻿namespace Gridify.Filter
 {
-    public class Filter : IFilter
+    public class Filter
     {
         public FilterOperators Operator { get; set; }
 
