@@ -1,5 +1,4 @@
 ﻿using Gridify.Filter;
-using Gridify.Order;
 using Gridify.Page;
 using System.Collections.Generic;
 
@@ -7,25 +6,25 @@ namespace Gridify
 {
     public class GridRequest
     {
-        public IEnumerable<FilterList> FilterList { get; set; }
+        public IEnumerable<FilterList> Filters { get; set; }
 
-        public IEnumerable<OrderList> OrderList { get; set; }
+        public IEnumerable<Order.Order> Orders { get; set; }
 
         public Pagination Pagination { get; set; }
 
         public bool Schema { get; set; }
     }
 
-    public class GridRequest<T> where T : new()
+    public class GridRequest<TSource> where TSource : new()
     {
-        public IEnumerable<FilterList> FilterList { get; set; }
+        public IEnumerable<FilterList> Filters { get; set; }
 
-        public IEnumerable<OrderList> OrderList { get; set; }
+        public IEnumerable<Order.Order> Orders { get; set; }
 
         public Pagination Pagination { get; set; }
 
         public bool Schema { get; set; }
 
-        public T Parameter { get; set; }
+        public TSource Parameter { get; set; }
     }
 }
