@@ -37,37 +37,37 @@ namespace Gridify.Result
             builder.AddMeta(builder.PropertyName, new MetaTitle { Title = builder.PropertyName });
 
             if (builder.PropertyInfo.PropertyType == typeof(string))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.String });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.String.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(int) || builder.PropertyInfo.PropertyType == typeof(int?))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Int });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Int.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(float) || builder.PropertyInfo.PropertyType == typeof(float?))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Float });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Float.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(double) || builder.PropertyInfo.PropertyType == typeof(double?))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Double });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Double.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(long) || builder.PropertyInfo.PropertyType == typeof(long?))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Double });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Double.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(decimal) || builder.PropertyInfo.PropertyType == typeof(decimal?))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Decimal });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Decimal.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(char) || builder.PropertyInfo.PropertyType == typeof(char?))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Char });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Char.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(DateTime) || builder.PropertyInfo.PropertyType == typeof(DateTime?))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.DateTime });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.DateTime.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(bool) || builder.PropertyInfo.PropertyType == typeof(bool?))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Boolean });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Boolean.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(Enum))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Enum });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Enum.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(Guid) || builder.PropertyInfo.PropertyType == typeof(Guid?))
-                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Guid });
+                builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Guid.ToString() });
 
             return builder;
         }
