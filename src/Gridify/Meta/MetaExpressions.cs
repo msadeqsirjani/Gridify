@@ -135,5 +135,16 @@ namespace Gridify.Meta
 
             return builder;
         }
+
+        public static MetaBuilder<TSource, TProperty> IsClickable<TSource, TProperty>(
+            this MetaBuilder<TSource, TProperty> builder, bool isClickable = true) where TSource : new()
+        {
+            builder.AddMeta(builder.PropertyName, new MetaClickable()
+            {
+                IsClickable = isClickable
+            });
+
+            return builder;
+        }
     }
 }

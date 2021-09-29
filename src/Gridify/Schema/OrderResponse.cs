@@ -1,9 +1,8 @@
-﻿using Gridify.Order;
-
-namespace Gridify.Schema
+﻿namespace Gridify.Schema
 {
-    public class OrderResponse : Order.Order
+    public class OrderResponse
     {
-
+        public string OrderBy { get; set; }
+        public string Direction { get; set; }
     }
 }

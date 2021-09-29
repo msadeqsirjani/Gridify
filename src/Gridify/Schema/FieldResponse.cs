@@ -1,5 +1,4 @@
-﻿using Gridify.Filter;
-using Gridify.Meta;
+﻿using Gridify.Meta;
 using System.Collections.Generic;
 
 namespace Gridify.Schema
@@ -14,8 +13,9 @@ namespace Gridify.Schema
         public bool IsEditable { get; set; }
         public bool IsSelectable { get; set; }
         public bool IsDetail { get; set; }
+        public bool IsClickable { get; set; }
         public int Sequence { get; set; }
-        public DataType DataType { get; set; }
+        public string DataType { get; set; }
 
         public FieldResponse FillFieldResponse(List<IMeta> metas)
         {
@@ -57,6 +57,9 @@ namespace Gridify.Schema
                         break;
                     case nameof(MetaDataType):
                         DataType = ((MetaDataType)meta).DataType;
+                        break;
+                    case nameof(MetaClickable):
+                        IsClickable = ((MetaClickable)meta).IsClickable;
                         break;
                 }
             });
