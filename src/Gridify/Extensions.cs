@@ -1,5 +1,6 @@
 ﻿using DynamicExpresso;
 using Gridify.Filter;
+using Gridify.Result;
 using Gridify.Strategies;
 using System;
 using System.Collections.Generic;
@@ -11,27 +12,30 @@ namespace Gridify
 {
     public static class Extensions
     {
-        private static readonly Dictionary<FilterDataTypes, IFilterDataTypeStrategy> DataTypeStrategies = new();
+        private static readonly Dictionary<DataType, IFilterDataTypeStrategy> DataTypeStrategies = new();
 
         static Extensions()
         {
-            DataTypeStrategies.Add(FilterDataTypes.Int, new IntDataTypeStrategy());
-            DataTypeStrategies.Add(FilterDataTypes.Float, new FloatDataTypeStrategy());
-            DataTypeStrategies.Add(FilterDataTypes.Double, new DoubleDataTypeStrategy());
-            DataTypeStrategies.Add(FilterDataTypes.Long, new LongDataTypeStrategy());
-            DataTypeStrategies.Add(FilterDataTypes.Decimal, new DecimalDataTypeStrategy());
-            DataTypeStrategies.Add(FilterDataTypes.String, new StringDataTypeStrategy());
-            DataTypeStrategies.Add(FilterDataTypes.Char, new CharDataTypeStrategy());
-            DataTypeStrategies.Add(FilterDataTypes.DateTime, new DateTimeDataTypeStrategy());
-            DataTypeStrategies.Add(FilterDataTypes.Boolean, new BooleanDataTypeStrategy());
-            DataTypeStrategies.Add(FilterDataTypes.Enum, new EnumDataTypeStrategy());
-            DataTypeStrategies.Add(FilterDataTypes.Guid, new GuidTypeStrategy());
+            DataTypeStrategies.Add(DataType.Int, new IntDataTypeStrategy());
+            DataTypeStrategies.Add(DataType.Float, new FloatDataTypeStrategy());
+            DataTypeStrategies.Add(DataType.Double, new DoubleDataTypeStrategy());
+            DataTypeStrategies.Add(DataType.Long, new LongDataTypeStrategy());
+            DataTypeStrategies.Add(DataType.Decimal, new DecimalDataTypeStrategy());
+            DataTypeStrategies.Add(DataType.String, new StringDataTypeStrategy());
+            DataTypeStrategies.Add(DataType.Char, new CharDataTypeStrategy());
+            DataTypeStrategies.Add(DataType.DateTime, new DateTimeDataTypeStrategy());
+            DataTypeStrategies.Add(DataType.Boolean, new BooleanDataTypeStrategy());
+            DataTypeStrategies.Add(DataType.Enum, new EnumDataTypeStrategy());
+            DataTypeStrategies.Add(DataType.Guid, new GuidTypeStrategy());
         }
 
-        public static IQueryable<T> Gridify<T>(this IQueryable<T> queryable, GridRequest request)
+        public static ServiceResult Gridify<T>(this IQueryable<T> queryable, GridRequest request) where T : new()
         {
             // Filter
             queryable = queryable.ApplyFiltering(request);
+
+            // Count
+            var count = queryable.Count();
 
             // Order
             queryable = queryable.ApplyOrdering(request);
@@ -39,7 +43,7 @@ namespace Gridify
             // Paging
             queryable = queryable.ApplyPaging(request);
 
-            return queryable;
+            return new ServiceResult(queryable, count);
         }
 
         public static IQueryable<T> ApplyPaging<T>(this IQueryable<T> queryable, GridRequest request)
@@ -57,12 +61,12 @@ namespace Gridify
 
         public static IQueryable<T> ApplyOrdering<T>(this IQueryable<T> queryable, GridRequest request)
         {
-            if (request.OrderList == null || !request.OrderList.Any())
+            if (request.Orders == null || !request.Orders.Any())
                 return queryable;
 
-            for (var i = 0; i < request.OrderList.Count(); i++)
+            for (var i = 0; i < request.Orders.Count(); i++)
             {
-                var orderList = request.OrderList.ToArray()[i];
+                var orderList = request.Orders.ToArray()[i];
 
                 if (!string.IsNullOrEmpty(orderList.OrderBy))
                 {
@@ -75,21 +79,21 @@ namespace Gridify
 
         public static IQueryable<T> ApplyFiltering<T>(this IQueryable<T> queryable, GridRequest request)
         {
-            if (request.FilterList == null || !request.FilterList.Any())
+            if (request.Filters == null || !request.Filters.Any())
                 return queryable;
 
             var whereExpression = string.Empty;
             var enumTypes = new List<KeyValuePair<string, string>>();
 
-            for (var i = 0; i < request.FilterList.Count(); i++)
+            for (var i = 0; i < request.Filters.Count(); i++)
             {
-                var filterList = request.FilterList.ToArray()[i];
+                var filterList = request.Filters.ToArray()[i];
 
                 var (generatedWhereExpression, generatedEnumTypes) = GenerateDynamicWhereExpression(filterList);
                 whereExpression += generatedWhereExpression;
                 enumTypes.AddRange(generatedEnumTypes);
 
-                if (i < request.FilterList.Count() - 1)
+                if (i < request.Filters.Count() - 1)
                 {
                     whereExpression += ConvertLogicSyntax(FilterLogic.Or);
                 }
@@ -119,7 +123,7 @@ namespace Gridify
             {
                 var filter = filterList.Filters.ToArray()[i];
 
-                if (filter.DataType == FilterDataTypes.Enum)
+                if (filter.DataType == DataType.Enum)
                 {
                     kvp.Add(new KeyValuePair<string, string>(filter.Fullname, filter.Assembly));
                 }
