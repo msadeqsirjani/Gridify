@@ -1,6 +1,6 @@
 ﻿namespace Gridify.Filter
 {
-    public enum FilterOperators : byte
+    public enum Operators : byte
     {
         Equal,
         NotEqual,

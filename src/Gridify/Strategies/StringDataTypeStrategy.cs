@@ -9,26 +9,26 @@ namespace Gridify.Strategies
         {
             switch (filter.Operator)
             {
-                case FilterOperators.Equal:
+                case Operators.Equal:
                     return filter.Key + " == \"" + filter.Value + "\"";
-                case FilterOperators.NotEqual:
+                case Operators.NotEqual:
                     return filter.Key + " != \"" + filter.Value + "\"";
-                case FilterOperators.Contains:
+                case Operators.Contains:
                     return filter.Key + ".Contains(\"" + filter.Value + "\")";
-                case FilterOperators.NotContains:
+                case Operators.NotContains:
                     return "!" + filter.Key + ".Contains(\"" + filter.Value + "\")";
-                case FilterOperators.StartsWith:
+                case Operators.StartsWith:
                     return filter.Key + ".StartsWith(\"" + filter.Value + "\")";
-                case FilterOperators.NotStartsWith:
+                case Operators.NotStartsWith:
                     return "!" + filter.Key + ".StartsWith(\"" + filter.Value + "\")";
-                case FilterOperators.EndsWith:
+                case Operators.EndsWith:
                     return filter.Key + ".EndsWith(\"" + filter.Value + "\")";
-                case FilterOperators.NotEndsWith:
+                case Operators.NotEndsWith:
                     return "!" + filter.Key + ".EndsWith(\"" + filter.Value + "\")";
-                case FilterOperators.GreaterThan:
-                case FilterOperators.GreaterOrEqualThan:
-                case FilterOperators.LessThan:
-                case FilterOperators.LessOrEqualThan:
+                case Operators.GreaterThan:
+                case Operators.GreaterOrEqualThan:
+                case Operators.LessThan:
+                case Operators.LessOrEqualThan:
                 default:
                     throw new StringDataTypeNotSupportedException($"String filter does not support {filter.Operator}");
             }

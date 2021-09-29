@@ -9,20 +9,20 @@ namespace Gridify.Strategies
         {
             switch (filter.Operator)
             {
-                case FilterOperators.Equal:
+                case Operators.Equal:
                     return filter.Key + " ==  new Guid(\"" + filter.Value + "\")";
-                case FilterOperators.NotEqual:
+                case Operators.NotEqual:
                     return filter.Key + " != new Guid(\"" + filter.Value + "\")";
-                case FilterOperators.Contains:
-                case FilterOperators.NotContains:
-                case FilterOperators.StartsWith:
-                case FilterOperators.NotStartsWith:
-                case FilterOperators.EndsWith:
-                case FilterOperators.NotEndsWith:
-                case FilterOperators.GreaterThan:
-                case FilterOperators.GreaterOrEqualThan:
-                case FilterOperators.LessThan:
-                case FilterOperators.LessOrEqualThan:
+                case Operators.Contains:
+                case Operators.NotContains:
+                case Operators.StartsWith:
+                case Operators.NotStartsWith:
+                case Operators.EndsWith:
+                case Operators.NotEndsWith:
+                case Operators.GreaterThan:
+                case Operators.GreaterOrEqualThan:
+                case Operators.LessThan:
+                case Operators.LessOrEqualThan:
                 default:
                     throw new GuidDataTypeNotSupportedException($"Guid filter does not support {filter.Operator}");
             }

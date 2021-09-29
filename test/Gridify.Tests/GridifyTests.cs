@@ -34,14 +34,14 @@ namespace Gridify.Tests
                         {
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.GreaterThan,
+                                Operator = Operators.GreaterThan,
                                 DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Midterm),
                                 Value = "98"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.StartsWith,
+                                Operator = Operators.StartsWith,
                                 DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.Name),
                                 Value = "Moha"
@@ -93,14 +93,14 @@ namespace Gridify.Tests
                         {
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.GreaterThan,
+                                Operator = Operators.GreaterThan,
                                 DataType = DataType.Decimal,
                                 Key = nameof(Student) + "." + nameof(Student.Bonus),
                                 Value = "50.5m"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.LessOrEqualThan,
+                                Operator = Operators.LessOrEqualThan,
                                 DataType = DataType.Double,
                                 Key = nameof(Student) + "." + nameof(Student.Average),
                                 Value = "75.5"
@@ -155,14 +155,14 @@ namespace Gridify.Tests
                         {
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.GreaterThan,
+                                Operator = Operators.GreaterThan,
                                 DataType = DataType.DateTime,
                                 Key = nameof(Student) + "." + nameof(Student.Birthday),
                                 Value = "1993-06-07 00:00:00"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.LessThan,
+                                Operator = Operators.LessThan,
                                 DataType = DataType.DateTime,
                                 Key = nameof(Student) + "." + nameof(Student.Birthday),
                                 Value = "1997-06-07 00:00:00"
@@ -208,7 +208,7 @@ namespace Gridify.Tests
                         {
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.Equal,
+                                Operator = Operators.Equal,
                                 DataType = DataType.Char,
                                 Key = nameof(Student) + "." + nameof(Student.Level),
                                 Value = "a"
@@ -254,21 +254,21 @@ namespace Gridify.Tests
                         {
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.GreaterThan,
+                                Operator = Operators.GreaterThan,
                                 DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Final),
                                 Value = "9"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.LessOrEqualThan,
+                                Operator = Operators.LessOrEqualThan,
                                 DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Midterm),
                                 Value = "100"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.StartsWith,
+                                Operator = Operators.StartsWith,
                                 DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.Surname),
                                 Value = "A"
@@ -282,14 +282,14 @@ namespace Gridify.Tests
                         {
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.Equal,
+                                Operator = Operators.Equal,
                                 DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.IdentityNumber),
                                 Value = "100010"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.Equal,
+                                Operator = Operators.Equal,
                                 DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.IdentityNumber),
                                 Value = "100101"
@@ -336,21 +336,21 @@ namespace Gridify.Tests
                         {
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.Contains,
+                                Operator = Operators.Contains,
                                 DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Midterm),
                                 Value = "9"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.LessThan,
+                                Operator = Operators.LessThan,
                                 DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Final),
                                 Value = "91"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.StartsWith,
+                                Operator = Operators.StartsWith,
                                 DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.Name),
                                 Value = "Author"
@@ -394,21 +394,21 @@ namespace Gridify.Tests
                         {
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.GreaterThan,
+                                Operator = Operators.GreaterThan,
                                 DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Midterm),
                                 Value = "9"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.LessThan,
+                                Operator = Operators.LessThan,
                                 DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Final),
                                 Value = "91"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.GreaterThan,
+                                Operator = Operators.GreaterThan,
                                 DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.Name),
                                 Value = "A"
@@ -451,21 +451,21 @@ namespace Gridify.Tests
                         {
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.GreaterThan,
+                                Operator = Operators.GreaterThan,
                                 DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Midterm),
                                 Value = "9"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.LessThan,
+                                Operator = Operators.LessThan,
                                 DataType = DataType.Int,
                                 Key = nameof(Student) + "." + nameof(Student.Final),
                                 Value = "91"
                             },
                             new Filter.Filter
                             {
-                                Operator = FilterOperators.GreaterThan,
+                                Operator = Operators.GreaterThan,
                                 DataType = DataType.String,
                                 Key = nameof(Student) + "." + nameof(Student.Name),
                                 Value = "A"

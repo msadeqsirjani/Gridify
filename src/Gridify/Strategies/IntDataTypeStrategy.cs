@@ -9,24 +9,24 @@ namespace Gridify.Strategies
         {
             switch (filter.Operator)
             {
-                case FilterOperators.Equal:
+                case Operators.Equal:
                     return filter.Key + " == " + filter.Value;
-                case FilterOperators.NotEqual:
+                case Operators.NotEqual:
                     return filter.Key + " != " + filter.Value;
-                case FilterOperators.GreaterThan:
+                case Operators.GreaterThan:
                     return filter.Key + " > " + filter.Value;
-                case FilterOperators.GreaterOrEqualThan:
+                case Operators.GreaterOrEqualThan:
                     return filter.Key + " >= " + filter.Value;
-                case FilterOperators.LessThan:
+                case Operators.LessThan:
                     return filter.Key + " < " + filter.Value;
-                case FilterOperators.LessOrEqualThan:
+                case Operators.LessOrEqualThan:
                     return filter.Key + " <= " + filter.Value;
-                case FilterOperators.Contains:
-                case FilterOperators.NotContains:
-                case FilterOperators.StartsWith:
-                case FilterOperators.NotStartsWith:
-                case FilterOperators.EndsWith:
-                case FilterOperators.NotEndsWith:
+                case Operators.Contains:
+                case Operators.NotContains:
+                case Operators.StartsWith:
+                case Operators.NotStartsWith:
+                case Operators.EndsWith:
+                case Operators.NotEndsWith:
                 default:
                     throw new IntDataTypeNotSupportedException($"String filter does not support {filter.Operator}");
 

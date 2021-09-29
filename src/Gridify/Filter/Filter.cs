@@ -2,7 +2,7 @@
 {
     public class Filter
     {
-        public FilterOperators Operator { get; set; }
+        public Operators Operator { get; set; }
 
         public DataType DataType { get; set; }
 

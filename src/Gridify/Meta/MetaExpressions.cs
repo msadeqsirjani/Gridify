@@ -31,12 +31,12 @@ namespace Gridify.Meta
         {
             builder.AddMeta(builder.PropertyName, new MetaFilter
             {
-                DataType = filter.DataType,
+                Operator = filter.Operator.ToString(),
+                DataType = filter.DataType.ToString(),
                 Value = filter.Value,
                 Fullname = filter.Fullname,
                 Assembly = filter.Assembly,
                 Key = filter.Key,
-                Operator = filter.Operator
             });
 
             return builder;
@@ -64,7 +64,7 @@ namespace Gridify.Meta
             builder.AddMeta(builder.PropertyName, new MetaOrder
             {
                 OrderBy = order.OrderBy,
-                Direction = order.Direction
+                Direction = order.Direction.ToString()
             });
 
             return builder;
@@ -108,7 +108,7 @@ namespace Gridify.Meta
         {
             builder.AddMeta(builder.PropertyName, new MetaDataType
             {
-                DataType = dateType
+                DataType = dateType.ToString()
             });
 
             return builder;
