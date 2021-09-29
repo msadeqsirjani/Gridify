@@ -2,7 +2,7 @@
 
 namespace Gridify.Schema
 {
-    public class OrderResponse : OrderList
+    public class OrderResponse : Order.Order
     {
 
     }
