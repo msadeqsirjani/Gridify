@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Gridify;
+using Microsoft.AspNetCore.Mvc;
 using Sample.Api.Models;
 using Sample.Entity;
 using Sample.Repository;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Gridify;
 
 namespace Sample.Api.Controllers
 {
@@ -19,8 +19,8 @@ namespace Sample.Api.Controllers
             _studentRepository = studentRepository;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Index([FromQuery] GridRequest request)
+        [HttpPost]
+        public async Task<IActionResult> Index(GridRequest request)
         {
             var filteredStudents = await _studentRepository.RetrieveStudents(request);
 
@@ -30,8 +30,8 @@ namespace Sample.Api.Controllers
         // You can implement paged result strategy depends on your strategy
         // It's simple 
         // you can contribute to improve it
-        [HttpGet("PagedResult")]
-        public async Task<IActionResult> PagedResult([FromQuery] GridRequest request)
+        [HttpPost("PagedResult")]
+        public async Task<IActionResult> PagedResult(GridRequest request)
         {
             var filteredStudents = await _studentRepository.RetrieveStudents(request);
 

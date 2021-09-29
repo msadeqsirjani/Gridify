@@ -24,8 +24,10 @@ namespace Sample.Entity
 
         public double Average { get; set; }
 
+        [NotMapped]
         public decimal Bonus { get; set; }
 
+        [NotMapped]
         public DateTime Birthday { get; set; }
 
         public char Level { get; set; }

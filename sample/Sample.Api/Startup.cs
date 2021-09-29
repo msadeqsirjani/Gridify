@@ -22,10 +22,10 @@ namespace Sample.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(c => c.UseSqlServer(
-                Configuration.GetConnectionString("FopSampleConnection"),
+                Configuration.GetConnectionString("SampleConnection"),
                 sqlOptions => sqlOptions.MigrationsAssembly("Sample.Data")));
 
-            services.AddScoped<IStudentRepository,StudentRepository>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
             {
@@ -37,7 +37,7 @@ namespace Sample.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseHsts();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
