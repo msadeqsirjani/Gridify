@@ -1,5 +1,4 @@
 ﻿using Gridify.Schema;
-using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -15,63 +14,6 @@ namespace Gridify.Result
         public ServiceResult(object value)
         {
             Value = value;
-            if (Value is IEnumerable enumerable)
-            {
-                Pagination = new PaginateResponse
-                {
-                    TotalRow = enumerable.Count()
-                };
-            }
-        }
-
-        public ServiceResult(object value, int total)
-        {
-            Value = value;
-            Pagination = new PaginateResponse
-            {
-                TotalRow = total
-            };
-        }
-
-        public ServiceResult(object value, int total, string message)
-        {
-            Value = value;
-            Pagination = new PaginateResponse
-            {
-                TotalRow = total
-            };
-            Message = message;
-        }
-
-        public ServiceResult InitSchema(GridRequest request)
-        {
-            Schema = request.Schema;
-
-            if (request.Pagination != null && Pagination != null)
-                Pagination.TotalPage = Pagination.TotalRow / request.Pagination.PageSize + 1;
-
-            return this;
-        }
-
-        public object Value { get; set; }
-        public string Message { get; set; }
-        public List<FieldResponse> Fields { get; set; }
-        public List<FilterResponse> Filters { get; set; }
-        public List<OrderResponse> Orders { get; set; }
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PaginateResponse Pagination { get; set; }
-        public bool Schema { get; set; }
-    }
-
-    public class ServiceResult<T>
-    {
-        public ServiceResult()
-        {
-
-        }
-        public ServiceResult(T value)
-        {
-            Value = value;
             if (value is IEnumerable enumerable)
             {
                 Pagination = new PaginateResponse
@@ -81,24 +23,42 @@ namespace Gridify.Result
             }
         }
 
-        public ServiceResult<T> InitSchema<TV>(GridRequest<TV> request) where TV : new()
+        public ServiceResult(object value, int count)
+        {
+            Value = value;
+
+            Pagination = new PaginateResponse
+            {
+                TotalRow = count
+            };
+        }
+
+        public ServiceResult InitSchema<TReturn>(GridRequest request) where TReturn : IGridResponse, new()
         {
             Schema = request.Schema;
 
             if (request.Pagination != null && Pagination != null)
                 Pagination.TotalPage = Pagination.TotalRow / request.Pagination.PageSize + 1;
 
+            if (!Schema) return this;
+
+            var schema = new TReturn().Schema;
+
+            Fields = schema.Fields;
+            Filters = schema.Filters;
+            Orders = schema.Orders;
+
             return this;
         }
 
-        public T Value { get; set; }
+        public object Value { get; set; }
         public string Message { get; set; }
+        public bool Schema { get; set; }
+
         public List<FieldResponse> Fields { get; set; }
         public List<FilterResponse> Filters { get; set; }
         public List<OrderResponse> Orders { get; set; }
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PaginateResponse Pagination { get; set; }
-        public bool Schema { get; set; }
     }
 
     public static class EnumerableExtensions
