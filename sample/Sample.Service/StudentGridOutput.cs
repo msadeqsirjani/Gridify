@@ -1,5 +1,5 @@
-﻿using Gridify.Meta;
-using Gridify.Result;
+﻿using Gridify;
+using Gridify.Meta;
 using Sample.Entity;
 
 namespace Sample.Repository

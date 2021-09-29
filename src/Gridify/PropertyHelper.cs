@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Gridify.Result
+namespace Gridify
 {
     public static class PropertyHelper<T>
     {

@@ -1,6 +1,6 @@
 ﻿using Gridify.Schema;
 
-namespace Gridify.Result
+namespace Gridify
 {
     public interface IGridResponse
     {

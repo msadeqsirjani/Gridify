@@ -37,7 +37,7 @@ namespace Gridify.Result
         {
             Schema = request.Schema;
 
-            if (request.Pagination != null && Pagination != null)
+            if (request.Pagination != null && Pagination != null && request.Pagination.Validate())
                 Pagination.TotalPage = Pagination.TotalRow / request.Pagination.PageSize + 1;
 
             if (!Schema) return this;

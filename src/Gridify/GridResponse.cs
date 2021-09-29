@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Gridify.Result
+namespace Gridify
 {
     public abstract class GridResponse<TSource> : IGridResponse where TSource : new()
     {
