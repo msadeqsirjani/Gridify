@@ -1,7 +1,7 @@
-# Fop
+# Gridify
 #### Filtering, Ordering (Sorting) and Pagination library for .Net Core, ASP.NET Core, C#
 
-For .Net Core developers, **Fop** serves you quite simple, easy to integrate and extensible Filtering, Ordering (Sorting) and Paging functionality.
+For .Net Core developers, **Gridify** serves you quite simple, easy to integrate and extensible Filtering, Ordering (Sorting) and Paging functionality.
 
 ### Next Things..
 - LOGO
