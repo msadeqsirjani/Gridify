@@ -16,6 +16,8 @@ namespace Gridify.Schema
         public bool IsClickable { get; set; }
         public int Sequence { get; set; }
         public string DataType { get; set; }
+        public FilterResponse Filter { get; set; }
+        public OrderResponse Order { get; set; }
 
         public FieldResponse FillFieldResponse(List<IMeta> metas)
         {
@@ -60,6 +62,23 @@ namespace Gridify.Schema
                         break;
                     case nameof(MetaClickable):
                         IsClickable = ((MetaClickable)meta).IsClickable;
+                        break;
+                    case nameof(MetaOrder):
+                        Order = new OrderResponse
+                        {
+                            OrderBy = ((MetaOrder)meta).OrderBy,
+                            Direction = ((MetaOrder)meta).Direction,
+                        };
+                        break;
+                    case nameof(MetaFilter):
+                        Filter = new FilterResponse()
+                        {
+                            DataType = ((MetaFilter) meta).DataType,
+                            Fullname = ((MetaFilter) meta).Fullname,
+                            Key = ((MetaFilter) meta).Key,
+                            Assembly = ((MetaFilter) meta).Assembly,
+                            Operator = ((MetaFilter) meta).Operator,
+                        };
                         break;
                 }
             });
