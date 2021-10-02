@@ -1,5 +1,7 @@
 ﻿using Gridify;
+using Gridify.Filter;
 using Gridify.Meta;
+using Gridify.Order;
 using Sample.Entity;
 
 namespace Sample.Repository
@@ -13,7 +15,19 @@ namespace Sample.Repository
                 .IsVisible(false);
 
             Meta(x => x.Name)
-                .AddTitle("عنوان");
+                .AddTitle("عنوان")
+                .AddFilter(new Filter
+                {
+                    Key = nameof(Student) + "." + nameof(Student.Name),
+                    Operator = Operators.Contains,
+                    DataType = DataType.String,
+                    Value = null
+                })
+                .AddOrder(new Order
+                {
+                    OrderBy = nameof(Student.Name),
+                    Direction = OrderDirection.Desc
+                });
 
             Meta(x => x.Birthday)
                 .AddTitle("تاریخ تولد");
