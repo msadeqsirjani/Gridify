@@ -12,6 +12,7 @@ namespace Gridify.Schema
             IsVisibleDefault = true;
             IsSelectable = true;
         }
+
         public string Name { get; set; }
         public string Title { get; set; }
         public bool IsKey { get; set; }
@@ -78,7 +79,7 @@ namespace Gridify.Schema
                         };
                         break;
                     case nameof(MetaFilter):
-                        Filter = new FilterResponse()
+                        Filter = new FilterResponse
                         {
                             DataType = ((MetaFilter)meta).DataType,
                             Fullname = ((MetaFilter)meta).Fullname,
