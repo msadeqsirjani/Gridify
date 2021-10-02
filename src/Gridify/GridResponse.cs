@@ -63,7 +63,7 @@ namespace Gridify
             if (builder.PropertyInfo.PropertyType == typeof(bool) || builder.PropertyInfo.PropertyType == typeof(bool?))
                 builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Boolean.ToString() });
 
-            if (builder.PropertyInfo.PropertyType == typeof(Enum))
+            if (builder.PropertyInfo.PropertyType.IsEnum)
                 builder.AddMeta(builder.PropertyName, new MetaDataType { DataType = DataType.Enum.ToString() });
 
             if (builder.PropertyInfo.PropertyType == typeof(Guid) || builder.PropertyInfo.PropertyType == typeof(Guid?))
