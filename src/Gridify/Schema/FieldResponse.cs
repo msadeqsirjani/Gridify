@@ -5,6 +5,13 @@ namespace Gridify.Schema
 {
     public class FieldResponse
     {
+
+        public FieldResponse()
+        {
+            IsVisible = true;
+            IsVisibleDefault = true;
+            IsSelectable = true;
+        }
         public string Name { get; set; }
         public string Title { get; set; }
         public bool IsKey { get; set; }
@@ -73,11 +80,11 @@ namespace Gridify.Schema
                     case nameof(MetaFilter):
                         Filter = new FilterResponse()
                         {
-                            DataType = ((MetaFilter) meta).DataType,
-                            Fullname = ((MetaFilter) meta).Fullname,
-                            Key = ((MetaFilter) meta).Key,
-                            Assembly = ((MetaFilter) meta).Assembly,
-                            Operator = ((MetaFilter) meta).Operator,
+                            DataType = ((MetaFilter)meta).DataType,
+                            Fullname = ((MetaFilter)meta).Fullname,
+                            Key = ((MetaFilter)meta).Key,
+                            Assembly = ((MetaFilter)meta).Assembly,
+                            Operator = ((MetaFilter)meta).Operator,
                         };
                         break;
                 }
