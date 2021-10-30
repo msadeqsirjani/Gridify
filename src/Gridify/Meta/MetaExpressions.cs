@@ -32,7 +32,7 @@ namespace Gridify.Meta
             builder.AddMeta(builder.PropertyName, new MetaFilter
             {
                 Operator = filter.Operator.ToString(),
-                DataType = filter.DataType.ToString(),
+                DataType = builder.GetDataType(),
                 Value = filter.Value,
                 Fullname = filter.Fullname,
                 Assembly = filter.Assembly,
