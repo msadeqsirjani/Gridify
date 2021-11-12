@@ -37,7 +37,7 @@ namespace Gridify
             // Count
             var count = queryable.Count();
 
-            // Order
+            // Orders
             queryable = queryable.ApplyOrdering(request);
 
             // Paging

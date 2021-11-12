@@ -4,10 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
 
-    <Authors>Aybars Arslan</Authors>
-    <Company>AybSoft</Company>
+    <Authors>Mohammad Sadeq Sirjani</Authors>
+    <Company>Cactus Blader=</Company>
     <Description>Sample API For Fop | Filtering, Ordering (Sorting) and Pagination library for .Net Core, ASP.NET Core, C#</Description>
-    <Copyright>Aybars Arslan</Copyright>
+    <Copyright>Mohammad Sadeq Sirjani</Copyright>
     <PackageTags>Sample API Filter, Sort, Order, Page, Filtering, Sorting, Ordering, Paging, .NET Core, ASP.NET Core, C#</PackageTags>
 
   </PropertyGroup>
@@ -19,6 +19,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>

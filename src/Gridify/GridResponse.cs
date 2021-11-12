@@ -14,7 +14,8 @@ namespace Gridify
 
         public void Add(string key, IMeta meta)
         {
-            _metadata.Add(new KeyValuePair<string, IMeta>(key, meta));
+            var keyValuePair = new KeyValuePair<string, IMeta>(key, meta);
+            _metadata.Add(keyValuePair);
         }
 
         [JsonIgnore]

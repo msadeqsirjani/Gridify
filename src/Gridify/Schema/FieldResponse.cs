@@ -1,5 +1,6 @@
 ﻿using Gridify.Meta;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Gridify.Schema
 {
@@ -25,7 +26,7 @@ namespace Gridify.Schema
         public int Sequence { get; set; }
         public string DataType { get; set; }
         public FilterResponse Filter { get; set; }
-        public OrderResponse Order { get; set; }
+        public List<OrderResponse> Orders { get; set; } = new();
 
         public FieldResponse FillFieldResponse(List<IMeta> metas)
         {
@@ -72,12 +73,19 @@ namespace Gridify.Schema
                         IsClickable = ((MetaClickable)meta).IsClickable;
                         break;
                     case nameof(MetaOrder):
-                        Order = new OrderResponse
+                    {
+                        var metaOrder = (MetaOrder)meta;
+                        if (!Orders.Any(x => x.Direction == metaOrder.Direction && x.OrderBy == metaOrder.OrderBy))
                         {
-                            OrderBy = ((MetaOrder)meta).OrderBy,
-                            Direction = ((MetaOrder)meta).Direction,
-                        };
+                            Orders.Add(new OrderResponse
+                            {
+                                OrderBy = metaOrder.OrderBy,
+                                Direction = metaOrder.Direction
+                            });
+                        }
+
                         break;
+                    }
                     case nameof(MetaFilter):
                         Filter = new FilterResponse
                         {

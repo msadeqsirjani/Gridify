@@ -5,6 +5,6 @@
         public string OrderBy { get; set; }
         public string Direction { get; set; }
 
-        public string GetName() => "Order";
+        public string GetName() => "Orders";
     }
 }

@@ -26,6 +26,11 @@ namespace Sample.Repository
                 .AddOrder(new Order
                 {
                     OrderBy = nameof(Student.Name),
+                    Direction = OrderDirection.Asc
+                })
+                .AddOrder(new Order
+                {
+                    OrderBy = nameof(Student.Name),
                     Direction = OrderDirection.Desc
                 });
 

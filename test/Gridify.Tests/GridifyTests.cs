@@ -1,3 +1,4 @@
+using System;
 using Gridify.Exceptions;
 using Gridify.Filter;
 using Gridify.Order;
@@ -50,7 +51,7 @@ namespace Gridify.Tests
                     }
                 },
 
-                // Order
+                // Orders
                 Orders = new[]
                 {
                     new Order.Order
@@ -74,7 +75,7 @@ namespace Gridify.Tests
             var values = (IEnumerable<Student>)result.Value;
 
             // Assert
-            Assert.True(values.Any(x => x.Name == "Mohammad Sadeq"));
+            Assert.True(values.Any(x => string.Equals(x.Name, "Mohammad Sadeq", StringComparison.InvariantCultureIgnoreCase)));
         }
 
         [Fact]
@@ -109,7 +110,7 @@ namespace Gridify.Tests
                     }
                 },
 
-                // Order
+                // Orders
                 Orders = new[]
                 {
                     new Order.Order
@@ -172,7 +173,7 @@ namespace Gridify.Tests
                 },
 
 
-                // Order
+                // Orders
                 Orders = new[]
                 {
                     new Order.Order
@@ -218,7 +219,7 @@ namespace Gridify.Tests
                 },
 
 
-                // Order
+                // Orders
                 Orders = new[]
                 {
                     new Order.Order
@@ -300,7 +301,7 @@ namespace Gridify.Tests
                 },
 
 
-                // Order
+                // Orders
                 Orders = new[]
                 {
                     new Order.Order
@@ -360,7 +361,7 @@ namespace Gridify.Tests
                 },
 
 
-                // Order
+                // Orders
                 Orders = new[]
                 {
                     new Order.Order
@@ -418,7 +419,7 @@ namespace Gridify.Tests
                 },
 
 
-                // Order
+                // Orders
                 Orders = new[]
                 {
                     new Order.Order
@@ -475,7 +476,7 @@ namespace Gridify.Tests
                 },
 
 
-                // Order
+                // Orders
                 Orders = new[]
                 {
                     new Order.Order
